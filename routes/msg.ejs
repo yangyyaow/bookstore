@@ -1,0 +1,13 @@
+
+<script>
+    /**
+     * 消息提示
+     */
+    $(function () {
+        var err = "<%= locals.err %>";
+        console.log(err);
+        if (err) {
+            layer.msg(err);
+        }
+    })
+</script>

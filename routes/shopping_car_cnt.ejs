@@ -1,0 +1,13 @@
+<script>
+    $(function () {
+        getCount();
+    })
+    /**
+     * 获取购物车数量
+     */
+    function getCount() {
+        $.get('/shopping-car/count', function (data) {
+            $("#shopping_car_total_num").html(data.total_num);
+        })
+    }
+</script>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>融智商城|登录</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="Keywords" content="融智商城">
+    <meta name="Description" content="融智商城">
+    <!--width=device-width, initial-scale=1适当的绘制和触屏缩放;user-scalable=no禁用缩放-->
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    <!--强跨浏览器表现的一致性css 重置样式-->
+    <link rel="stylesheet" href="/css/iconfont.css">
+    <!--字体图标-->
+    <link rel="stylesheet" href="/css/main.css">
+    <!--自用样式-->
+</head>
+
+<body class="rz-page-loginbg">
+<header class="rz-page-login-headr"><img src="/images/loginlogo.png"></header>
+<section class="rz-page-login-main">
+    <div class="rz-page-login-main-h">
+        <h3>登录</h3>
+        <span>还没有账号，<a href="/register">去注册</a>></span></div>
+    <div class="rz-page-login-main-form">
+        <form action="/login" method="post" onsubmit="return checkForm()">
+            <input class="wrong input" id="email" name="email" placeholder="请输入邮箱" type="text">
+            <div class="hint hint_wrong" style="visibility: visible;" id="email-err"></div>
+            <input class="wrong input" id="password" name="password" placeholder="请输入密码" type="password">
+            <div class="hint hint_wrong" style="visibility: visible;" id="password-err"></div>
+            <label class="checkbox" for="chk11">
+                <input style="height: auto;" id="chk11" name="remember_me" value="1" type="checkbox">
+                <p>记住我</p>
+            </label>
+            <div class="rz-page-login-main-ok">
+                <button>登录</button>
+            </div>
+        </form>
+    </div>
+    <div class="rz-page-login-lietu"><img src="/images/lietu.jpg"></div>
+</section>
+<footer class="rz-page-login-footer">©Copyright Geeboo.com. All Rights Reserved 京公网安备号：110108007068 ICP备11013919号-1
+    京ICP证110513号
+</footer>
+
+<!--jquery-->
+<script src="/js/jquery.min.js"></script>
+<!-- 自用jq -->
+<script src="/js/main.js"></script>
+<!-- superslide -->
+<script src="/js/jquery.SuperSlide.2.1.1.js"></script>
+<script src="/vendor/layer/layer.js"></script>
+
+<%- include('msg') %>
+
+<script>
+
+
+    /**
+     * 表单验证
+     * @returns {boolean}
+     */
+    function checkForm() {
+        var email = $("#email").val();
+        var password = $("#password").val();
+        var isSubmit = true;
+        if (email == "") {
+            $("#email-err").html("请输入邮箱！");
+            isSubmit = false;
+        }
+        if (password == "") {
+            $("#password-err").html("请输入密码！");
+            isSubmit = false;
+        }
+        return isSubmit;
+    }
+</script>
+</body>
+</html>

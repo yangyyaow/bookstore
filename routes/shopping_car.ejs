@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>融智商城|购物车</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="Keywords" content="融智商城">
+    <meta name="Description" content="融智商城">
+    <!--width=device-width, initial-scale=1适当的绘制和触屏缩放;user-scalable=no禁用缩放-->
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    <!--强跨浏览器表现的一致性css 重置样式-->
+    <link rel="stylesheet" href="/css/iconfont.css">
+    <!--字体图标-->
+    <link rel="stylesheet" type="text/css" href="/css/star-rating-svg.css">
+    <!--svg-->
+    <link rel="stylesheet" href="/css/alert.css">
+    <!--alert-->
+    <link rel="stylesheet" href="/css/main.css">
+    <!--自用样式-->
+</head>
+
+<body>
+<!-- 头部模块 -->
+
+<%- include('header') %>
+
+<!-- 主体 -->
+<section class="container">
+    <div class="rz-crumbs">当前所在位置：<a href="/">融智教育</a> &gt; <a href="#">购物车</a></div>
+    <div class="cartMain_tit">我的购物车</div>
+    <section class="cartMain">
+        <div class="cartMain_hd">
+            <ul class="order_lists cartTop">
+                <li class="list_chk1">
+                    <!--所有商品全选-->
+                    <input type="checkbox" id="all" class="whole_check">
+                    <label for="all"></label>
+                    全选
+                </li>
+                <li class="list_con">商品信息</li>
+                <li class="list_price">单价</li>
+                <li class="list_amount">数量</li>
+                <li class="list_sum">金额</li>
+                <li class="list_op">操作</li>
+            </ul>
+        </div>
+
+        <div class="cartBox">
+
+            <div class="order_content">
+                <% for(let i = 0; i < list.length; i++) { %>
+                <ul class="order_lists">
+                    <li class="list_chk">
+                        <input type="checkbox" id="checkbox_2" class="son_check">
+                        <label for="checkbox_2"></label>
+                    </li>
+                    <li class="list_con">
+                        <div class="list_img"><a href="javascript:;"><img src="/images/65465465.jpg" alt=""></a></div>
+                        <div class="list_text"><a href="javascript:;">
+                                <p><%= list[i].book_id.name %></p>
+                                <p>作者：<%= list[i].book_id.author_id.name %></p></a></div>
+                    </li>
+
+                    <li class="list_price">
+                        <p class="price">￥<%= parseFloat(list[i].book_id.price) / 100 %></p>
+                    </li>
+                    <li class="list_amount">
+                        <div class="amount_box">
+                            <a href="javascript:;" class="reduce reSty">-</a>
+                            <input type="text" value="<%= list[i].num %>" class="sum">
+                            <a href="javascript:;" class="plus">+</a>
+                        </div>
+                    </li>
+                    <li class="list_sum">
+                        <p class="sum_price">
+                            ￥<%= (parseFloat(list[i].book_id.price) * parseInt(list[i].num))/100 %>
+                        </p>
+                    </li>
+                    <li class="list_op">
+                        <p class="del"><a href="javascript:;" class="delBtn">移除商品</a></p>
+                    </li>
+                </ul>
+                <% } %>
+            </div>
+        </div>
+
+
+        <!--底部-->
+        <div class="bar-wrapper">
+            <div class="bar-left"><a href="#">在逛逛</a></div>
+            <div class="bar-right">
+
+                <div class="piece">已选商品<strong class="piece_num">0</strong>件</div>
+                <div class="totalMoney">共计: <strong class="total_text">0.00</strong></div>
+                <div class="calBtn"><a href="javascript:;">结算</a></div>
+            </div>
+        </div>
+    </section>
+    <section class="model_bg"></section>
+    <section class="my_model">
+        <p class="title">删除图书<span class="closeModel">X</span></p>
+        <p>您确认要删除该图书吗？</p>
+        <div class="opBtn"><a href="javascript:;" class="dialog-sure">确定</a><a href="javascript:;" class="dialog-close">关闭</a>
+        </div>
+    </section>
+</section>
+<!-- 底部声明 -->
+<%- include('footer') %>
+<!--jquery-->
+<script src="/js/jquery.min.js"></script>
+<!-- 购物车 -->
+<script src="/js/carts.js"></script>
+<script src="/js/jquery.star-rating-svg.js"></script>
+<!-- 自用jq -->
+<script src="/js/main.js"></script>
+<!-- alert -->
+<script src="/js/alert.min.js"></script>
+<script src='/js/shCore.js'></script>
+<!-- superslide -->
+<script src="js/jquery.SuperSlide.2.1.1.js"></script>
+
+<!--购物车数量-->
+<%- include('shopping_car_cnt') %>
+
+<script type="text/javascript">
+
+    /* Tab切换 */
+    $("#tabRank").slide({titCell: "dt h3", mainCell: "dd", autoPlay: false, effect: "left", delayTime: 300});
+</script>
+
+</body>
+</html>

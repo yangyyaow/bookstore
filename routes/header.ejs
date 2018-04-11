@@ -1,0 +1,40 @@
+<!-- 头部模块 -->
+<header class="rz-home-header">
+    <div class="container">
+        <div class="fll">
+            <div class="rz-home-logo fll"><a href="#"><img src="/images/logo.jpg" title="融智商城" alt="融智商城"></a></div>
+            <!-- 导航 -->
+            <nav class="rz-home-nav fll">
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">分类</a></li>
+                    <li><a href="#">排行榜</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="frr">
+            <!-- 搜索 -->
+            <div class="rz-home-search fll">
+                <form>
+                    <input placeholder="搜索从这里开始..." type="text">
+                    <button type="submit" class="icon iconfont icon-iconfontzhizuobiaozhun22"></button>
+                </form>
+            </div>
+            <!-- 注册登陆 -->
+
+            <% if(locals.user) { %>
+            <div class="rz-home-landing fll"><a href="">登出</a></div>
+            <% } else { %>
+            <div class="rz-home-landing fll"><a href="/login">登陆</a><span>/</span><a href="/register">注册</a></div>
+            <% } %>
+
+            <!-- 购物车 -->
+            <div class="rz-home-shopping-link fll">
+                <i class="icon iconfont icon-gouwuche"></i>
+                <a href="/shopping-car">购物车</a>
+                <span id="shopping_car_total_num"></span>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</header>

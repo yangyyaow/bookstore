@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>融智商城|详情页</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="Keywords" content="融智商城">
+    <meta name="Description" content="融智商城">
+    <!--width=device-width, initial-scale=1适当的绘制和触屏缩放;user-scalable=no禁用缩放-->
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    <!--强跨浏览器表现的一致性css 重置样式-->
+    <link rel="stylesheet" href="/css/iconfont.css">
+    <!--字体图标-->
+    <link rel="stylesheet" type="text/css" href="/css/star-rating-svg.css">
+    <!--svg-->
+    <link rel="stylesheet" href="/css/alert.css">
+    <!--alert-->
+    <link rel="stylesheet" href="/css/main.css">
+    <!--自用样式-->
+</head>
+
+<body>
+<!-- 头部模块 -->
+
+<%- include('header') %>
+
+<!-- 主体 -->
+<section class="container">
+    <article class="rz-home-main">
+        <div class="rz-crumbs1">当前所在位置：<a href="#">融智教育</a> &gt; <a href="#">书籍详情</a></div>
+        <div class="rz-page-join"><img src="/images/65465465.jpg" class="fll">
+            <div class="fll">
+                <input type="hidden" id="id" value="<%= book._id %>">
+                <h3><%= book.name %></h3>
+                <p><b>类别：</b> <%= book.category_id.pid.name %> > <%= book.category_id.name %></p>
+                <p><b>作者： </b> <%= book.author_id.name %></p>
+                <p><b>版权提供：</b> 简帛制作公版书</p>
+                <div class="gw_num">
+                    <em class="jian">-</em>
+                    <input type="text" value="1" class="num" id="num" disabled/>
+                    <em class="add">+</em>
+                </div>
+                <div class="rz-page-join-input">
+                    <a href="javascript:;" onclick="addShoppingCar()">
+                        <i class="icon iconfont icon-gouwuche"></i>
+                        加入购物车
+                    </a>
+                    <a href="#">立即购买</a></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="rz-page-join-abstract">
+            <div class="title">
+                <h3>简介</h3>
+            </div>
+            <div class="rz-page-join-text">
+                <div class="subtitle">
+                    <h3>图书简介</h3>
+                </div>
+                <p><%= book.content %></p>
+            </div>
+            <div class="rz-page-join-text">
+                <div class="subtitle">
+                    <h3>基本信息</h3>
+                </div>
+                <ul>
+                    <li><b>类 别：</b><%= book.category_id.pid.name %> > <%= book.category_id.name %></li>
+                    <li><b>作 者：</b><%= book.author_id.name %></li>
+                    <li><b>版权提供：</b>简帛制作公版书赋</li>
+                </ul>
+            </div>
+            <div class="rz-page-join-text">
+                <div class="subtitle">
+                    <h3>作者简介</h3>
+                </div>
+                <p><%= book.author_id.content %></p>
+            </div>
+            <div class="rz-page-join-comment">
+                <div class="subtitle">
+                    <h3>图书评论</h3>
+                </div>
+                <ul>
+                    <li>
+                        <div class="rz-page-join-comment01"><span>共有1条评论</span>
+                            <p><i class="icon iconfont icon-shoucang"></i><i class="icon iconfont icon-shoucang"></i><i
+                                        class="icon iconfont icon-shoucang"></i></p>
+                        </div>
+                        <div class="rz-page-join-comment02">
+                            <div class="fll"><img src="">
+                                <h3>牛牛</h3>
+                                <p>特别特别的好看！</p>
+                            </div>
+                            <div class="frr">2016-06-02 10:48:35</div>
+                        </div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <div class="rz-page-join-comment01"><span>共有1条评论</span>
+                            <p><i class="icon iconfont icon-shoucang"></i><i class="icon iconfont icon-shoucang"></i><i
+                                        class="icon iconfont icon-shoucang"></i></p>
+                        </div>
+                        <div class="rz-page-join-comment02">
+                            <div class="fll"><img src="">
+                                <h3>牛牛</h3>
+                                <p>特别特别的好看！</p>
+                            </div>
+                            <div class="frr">2016-06-02 10:48:35</div>
+                        </div>
+                        <div class="clear"></div>
+                    </li>
+                </ul>
+                <ul class="pagination">
+                    <li><a href="#">«</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a class="active" href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">6</a></li>
+                    <li><a href="#">7</a></li>
+                    <li><a href="#">»</a></li>
+                </ul>
+            </div>
+        </div>
+    </article>
+    <aside class="rz-home-ranking">
+        <div class="title">诗词歌赋畅销排行榜</div>
+        <dl class="tabRank" id="tabRank">
+            <dd class="bd">
+                <ul class="ulList">
+                    <li class="itm clearfix"><em>01</em>
+                        <p class="u_t">
+                            <a href="#" target="_blank">你是那人间的四月天</a>
+                            <span class="u_a">林徽因</span>
+                        </p>
+                        <a href="#" rel="nofollow" target="_blank"><span class="u_price"
+                                                                         onmousemove="$(this).html('去购买')" ;=""
+                                                                         onmouseout="$(this).html('&lt;p&gt;免费&lt;/p&gt;')"><p>免费</p></span></a>
+                    </li>
+                    <li class="itm clearfix"><em>02</em>
+                        <p class="u_t">
+                            <a href="#" target="_blank">你是那人间的四月天</a>
+                            <span class="u_a">林徽因</span>
+                        </p>
+                        <a href="#" rel="nofollow" target="_blank"><span class="u_price"
+                                                                         onmousemove="$(this).html('去购买')" ;=""
+                                                                         onmouseout="$(this).html('&lt;p&gt;免费&lt;/p&gt;')"><p>免费</p></span></a>
+                    </li>
+                    <li class="itm clearfix"><em>03</em>
+                        <p class="u_t">
+                            <a href="#" target="_blank">你是那人间的四月天</a>
+                            <span class="u_a">林徽因</span>
+                        </p>
+                        <a href="#" rel="nofollow" target="_blank"><span class="u_price"
+                                                                         onmousemove="$(this).html('去购买')" ;=""
+                                                                         onmouseout="$(this).html('&lt;p&gt;免费&lt;/p&gt;')"><p>免费</p></span></a>
+                    </li>
+                    <div class="i_more" id="phbMore"><a href="#">查看完整榜单<span class="arr">&gt;&gt;</span></a></div>
+                </ul>
+                <ul class="ulList">
+                    <li class="itm clearfix"><em>01</em>
+                        <p class="u_t">
+                            <a href="#" target="_blank">你是那人间的四月天</a>
+                            <span class="u_a">林徽因</span>
+                        </p>
+                        <a href="#" rel="nofollow" target="_blank"><span class="u_price"
+                                                                         onmousemove="$(this).html('去购买')" ;=""
+                                                                         onmouseout="$(this).html('&lt;p&gt;免费&lt;/p&gt;')"><p>免费</p></span></a>
+                    </li>
+                    <li class="itm clearfix"><em>02</em>
+                        <p class="u_t">
+                            <a href="#" target="_blank">你是那人间的四月天</a>
+                            <span class="u_a">林徽因</span>
+                        </p>
+                        <a href="#" rel="nofollow" target="_blank"><span class="u_price"
+                                                                         onmousemove="$(this).html('去购买')" ;=""
+                                                                         onmouseout="$(this).html('&lt;p&gt;免费&lt;/p&gt;')"><p>免费</p></span></a>
+                    </li>
+                    <li class="itm clearfix"><em>03</em>
+                        <p class="u_t">
+                            <a href="#" target="_blank">你是那人间的四月天</a>
+                            <span class="u_a">林徽因</span>
+                        </p>
+                        <a href="#" rel="nofollow" target="_blank"><span class="u_price"
+                                                                         onmousemove="$(this).html('去购买')" ;=""
+                                                                         onmouseout="$(this).html('&lt;p&gt;免费&lt;/p&gt;')"><p>免费</p></span></a>
+                    </li>
+                    <div class="i_more" id="phbMore"><a href="#">查看完整榜单<span class="arr">&gt;&gt;</span></a></div>
+                </ul>
+
+    </aside>
+</section>
+<!-- 底部声明 -->
+<%- include('footer') %>
+<!--jquery-->
+<script src="/js/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+//加的效果
+        $(".add").click(function () {
+            var n = $(this).prev().val();
+            var num = parseInt(n) + 1;
+            if (num == 0) {
+                return;
+            }
+            $(this).prev().val(num);
+        });
+//减的效果
+        $(".jian").click(function () {
+            var n = $(this).next().val();
+            var num = parseInt(n) - 1;
+            if (num == 0) {
+                return
+            }
+            $(this).next().val(num);
+        });
+    })
+</script>
+<!-- 购物车 -->
+<script src="/js/carts.js"></script>
+<script src="/js/jquery.star-rating-svg.js"></script>
+<!-- 自用jq -->
+<script src="/js/main.js"></script>
+<!-- alert -->
+<script src="/js/alert.min.js"></script>
+<script src='/js/shCore.js'></script>
+<!-- superslide -->
+<script src="/js/jquery.SuperSlide.2.1.1.js"></script>
+<script src="/vendor/layer/layer.js"></script>
+
+<!--购物车数量-->
+<%- include('shopping_car_cnt.ejs') %>
+
+<script type="text/javascript">
+
+    /* Tab切换 */
+    $("#tabRank").slide({titCell: "dt h3", mainCell: "dd", autoPlay: false, effect: "left", delayTime: 300});
+
+
+    /**
+     * 加入购物车
+     */
+    function addShoppingCar() {
+        var id = $("#id").val();
+        var num = $("#num").val();
+        $.post('/shopping-car', {book_id: id, num: num}, function (data) {
+            if (data.status == true) {
+                getCount();
+                layer.msg(data.msg);
+            } else {
+                layer.msg(data.msg);
+            }
+        })
+    }
+
+</script>
+
+</body>
+</html>
